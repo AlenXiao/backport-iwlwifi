@@ -1,0 +1,23 @@
+Manu:
+    https://sandilands.info/sgordon/capturing-wifi-in-monitor-mode-with-iw
+
+Command:
+
+sudo iw phy phy0 interface add mon0 type monitor
+
+sleep 3s
+
+sudo iw dev wlp4s0 del
+#sudo ifconfig wlp4s0 down
+
+sleep 3s
+
+sudo ifconfig mon0 up
+
+sleep 3s
+
+iwconfig mon0
+
+sleep 3s
+
+sudo tcpdump -i mon0

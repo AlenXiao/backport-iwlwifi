@@ -1798,7 +1798,7 @@ static int _iwl_trans_pcie_start_hw(struct iwl_trans *trans, bool low_power)
 		IWL_ERR(trans, "Error while preparing HW: %d\n", err);
 		return err;
 	}
-
+#if 0
 	hpm = iwl_trans_read_prph(trans, HPM_DEBUG);
 	if (hpm != 0xa5a5a5a0 && (hpm & PERSISTENCE_BIT)) {
 		if (iwl_trans_read_prph(trans, PREG_PRPH_WPROT_0) &
@@ -1809,6 +1809,7 @@ static int _iwl_trans_pcie_start_hw(struct iwl_trans *trans, bool low_power)
 		}
 		iwl_trans_write_prph(trans, HPM_DEBUG, hpm & ~PERSISTENCE_BIT);
 	}
+#endif
 
 	iwl_trans_pcie_sw_reset(trans);
 
